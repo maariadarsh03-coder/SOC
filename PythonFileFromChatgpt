@@ -1,0 +1,118 @@
+# generate_SOC_roadmap.py
+# Create SOC_Roadmap.pdf with clickable links.
+# Requirements: pip install reportlab
+
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+import textwrap, os, sys
+
+OUTFILE = "SOC_Roadmap.pdf"
+PAGE_WIDTH, PAGE_HEIGHT = letter
+LEFT_MARGIN = 1 * inch
+TOP_START = PAGE_HEIGHT - 1 * inch
+LINE_HEIGHT = 12
+
+# Stable URLs used in the PDF
+LINKS = {
+    "Splunk Training": "https://www.splunk.com/en_us/training.html",
+    "TryHackMe": "https://tryhackme.com",
+    "Security Onion": "https://securityonion.net",
+    "MITRE ATT&CK": "https://attack.mitre.org",
+    "Elastic (ELK)": "https://www.elastic.co/what-is/elk-stack",
+    "Microsoft Sentinel docs": "https://learn.microsoft.com/en-us/azure/sentinel/",
+    "BlueTeamLabsOnline": "https://blueteamlabs.online",
+    "AlienVault OTX": "https://otx.alienvault.com",
+    "VirusTotal": "https://www.virustotal.com"
+}
+
+PDF_TEXT = [
+    ("Title", "SOC Roadmap — Beginner → Advanced"),
+    ("Overview", "Single-file learning roadmap for SOC analysts — Foundations to Advanced. Resources are labeled [Free] or [Paid]."),
+    ("Phase 0 — Plan & Timeline", "Suggested 6–12 month plan: Months 0–2 foundations; Months 3–4 core SOC; Months 5–6 build lab; Months 7–12 advanced hunting & certs."),
+    ("Phase 1 — Foundations (must-have)", "Networking basics: search 'Network Fundamentals' (channels: NetworkChuck). Linux basics: 'LearnLinuxTV'. Windows basics: 'Windows Event Logs / PowerShell'."),
+    ("Phase 2 — Cybersecurity Essentials", "CompTIA Security+ (paid). TryHackMe Introduction to Cyber Security (TryHackMe). MITRE ATT&CK intro videos & docs."),
+    ("Phase 3 — SOC Core Skills", "Splunk Fundamentals 1 (official free training). Elastic Stack (ELK) for security. TryHackMe SOC Level 1. Tools: Splunk, ELK, Security Onion, Zeek, Suricata."),
+    ("Phase 4 — Incident Response & Forensics", "Incident Response tutorials (SANS, Black Hills). Books: 'Incident Response & Computer Forensics', 'The Art of Memory Forensics'."),
+    ("Phase 5 — Threat Hunting & Detection", "Threat hunting tutorials (Blue Team Village, CrowdStrike). Tools: YARA, Volatility, Sigma rules."),
+    ("Phase 6 — Build a Home SOC Lab", "Components: Windows VMs, Linux (ELK/Security Onion), Kali (attacker VM). Steps: deploy -> forward logs -> simulate attacks -> tune detections."),
+    ("Certifications", "CompTIA Security+, EC-Council CSA, Splunk certifications, GCIH, GCIA, OSCP, Microsoft SC-200."),
+    ("Recommended books", "Blue Team Handbook; Practical Splunk for Security; Incident Response & Computer Forensics; The Art of Memory Forensics; Practical Cyber Threat Intelligence; Cybersecurity Blue Team Toolkit."),
+    ("Channels & Platforms", "YouTube: NetworkChuck, The Cyber Mentor, Blue Team Labs, SANS, CrowdStrike, Elastic, Microsoft Security. Platforms: TryHackMe, Hack The Box, Splunk, Elastic, Security Onion."),
+    ("Appendix — How to use this roadmap", "Follow phases sequentially. Pair video learning with hands-on labs. Build a home SOC early. Keep a learning log for each detection practiced.")
+]
+
+def write_wrapped(c, x, y, text, max_width=72):
+    lines = textwrap.wrap(text, max_width)
+    for line in lines:
+        c.drawString(x, y, line)
+        y -= LINE_HEIGHT
+    return y
+
+def add_hyperlink(c, text, x, y, url):
+    c.drawString(x, y, text)
+    text_width = c.stringWidth(text, "Helvetica", 9)
+    # link rect: (x1,y1,x2,y2)
+    c.linkURL(url, (x, y-2, x + text_width, y + 8), relative=0)
+
+def generate_pdf(outfile):
+    c = canvas.Canvas(outfile, pagesize=letter)
+    c.setTitle("SOC Roadmap — Beginner to Advanced")
+    y = TOP_START
+
+    # Header
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(LEFT_MARGIN, y, "SOC Roadmap — Beginner → Advanced")
+    y -= 18
+    c.setFont("Helvetica-Oblique", 9)
+    c.drawString(LEFT_MARGIN, y, "Single-file roadmap (Foundations → Advanced). Resources marked [Free] / [Paid].")
+    y -= 18
+
+    c.setFont("Helvetica", 9)
+
+    for heading, content in PDF_TEXT:
+        if y < 1.5 * inch:
+            c.showPage()
+            y = TOP_START
+            c.setFont("Helvetica", 9)
+
+        c.setFont("Helvetica-Bold", 11)
+        c.drawString(LEFT_MARGIN, y, heading)
+        y -= 14
+        c.setFont("Helvetica", 9)
+        y = write_wrapped(c, LEFT_MARGIN, y, content, max_width=110)
+        y -= 8
+
+    # Add resource links section with clickable URLs
+    if y < 2 * inch:
+        c.showPage()
+        y = TOP_START
+
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(LEFT_MARGIN, y, "Useful Links (clickable)")
+    y -= 14
+    c.setFont("Helvetica", 9)
+    for name, url in LINKS.items():
+        if y < 1.2 * inch:
+            c.showPage()
+            y = TOP_START
+            c.setFont("Helvetica", 9)
+        # Draw link text and add clickable region
+        link_text = f"{name}: {url}"
+        c.drawString(LEFT_MARGIN, y, link_text)
+        text_width = c.stringWidth(link_text, "Helvetica", 9)
+        c.linkURL(url, (LEFT_MARGIN, y-2, LEFT_MARGIN + text_width, y + 8), relative=0)
+        y -= 14
+
+    # Footer
+    c.setFont("Helvetica-Oblique", 8)
+    c.drawString(LEFT_MARGIN, 0.65 * inch, "Generated by Cyber Security Specialist — use with hands-on labs to learn fast.")
+    c.save()
+
+if __name__ == "__main__":
+    try:
+        generate_pdf(OUTFILE)
+        print("PDF created:", OUTFILE)
+    except Exception as e:
+        print("Error generating PDF:", e)
+        sys.exit(1)
