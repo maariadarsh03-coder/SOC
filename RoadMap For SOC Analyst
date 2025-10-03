@@ -1,0 +1,190 @@
+Great — I’ll give you one single, ready-to-copy response that contains:
+
+1. The full **SOC Roadmap text** (exactly what will appear in the PDF) so you can copy it directly.
+2. A **ready-to-run Python script** that generates a polished PDF (`SOC_Roadmap.pdf`) with clickable links.
+3. **Simple step-by-step instructions** to run it (no prior knowledge assumed).
+
+Copy everything below into a file and run it. I included commonly-used, stable URLs (Splunk, TryHackMe, Security Onion, MITRE ATT&CK, etc.) so your PDF has direct links.
+
+---
+
+## 1) Full SOC Roadmap — copy this text anywhere
+
+**Title:** SOC Roadmap — Beginner → Advanced
+**Author:** Cyber Security Specialist
+
+---
+
+### Overview
+
+This single-file learning roadmap helps you become a SOC analyst — from foundations to advanced threat hunting and forensics. Resources are labeled **[Free]** or **[Paid]**.
+
+---
+
+### Phase 0 — Plan & Timeline
+
+Suggested 6–12 month plan:
+
+* Months 0–2: Foundations — Networking, OS, basic security.
+* Months 3–4: Core SOC skills — SIEM, log analysis, incident response.
+* Months 5–6: Hands-on labs, build home SOC lab.
+* Months 7–12: Advanced — Threat hunting, forensics, detection engineering, certifications.
+
+---
+
+### Phase 1 — Foundations (must-have)
+
+**Goal:** Networking, operating systems, and basic security concepts.
+
+**Recommended videos/courses (search terms & channels):**
+
+* “Network Fundamentals” — channels: NetworkChuck, professor Messer. **[Free/Paid mixture]**
+* “Linux basics / command line” — channels: LearnLinuxTV, The Linux Foundation. **[Free]**
+* “Windows Event Logs / PowerShell basics” — channels: Microsoft Learn, ITProTV. **[Free]**
+
+**Books:**
+
+* *CompTIA Network+ Study Guide* — any current edition. **[Paid]**
+* *The Linux Command Line* — William Shotts. **[Free/Paid]**
+
+---
+
+### Phase 2 — Cybersecurity Essentials
+
+**Goal:** Understand security fundamentals & common attacks.
+
+**Courses / Paths:**
+
+* **CompTIA Security+** — course and labs. **[Paid]**
+* **TryHackMe: Introduction to Cyber Security** — TryHackMe path. **[Free tier / Paid labs]**
+* **MITRE ATT&CK Intro** — search “MITRE ATT&CK for beginners” (videos and docs). **[Free]**
+
+**Books:**
+
+* *The Basics of Hacking and Penetration Testing* — Patrick Engebretson. **[Paid]**
+* *The Practice of Network Security Monitoring* — Richard Bejtlich. **[Paid]**
+
+---
+
+### Phase 3 — SOC Core Skills (daily SOC)
+
+**Goal:** Log analysis, SIEM usage, alert triage, and tuning.
+
+**SIEM / Playlists & Docs:**
+
+* **Splunk Fundamentals 1** (official training). **[Free — Splunk offers free training]**
+* **Elastic Stack (ELK) for security** — Elastic docs & tutorials. **[Free]**
+* **Microsoft Sentinel (Azure)** learning path. **[Free / Azure may cost for live ingestion]**
+
+**Hands-on labs:**
+
+* **TryHackMe — SOC Level 1** (guided labs). **[Free/Paid]**
+* **BlueTeamLabsOnline** — practical blue team labs (some free, some paid). **[Paid/Free parts]**
+
+**Tools to practice:** Splunk (free developer license), Elastic Stack, Security Onion, Zeek, Suricata, Filebeat/Winlogbeat.
+
+**Books:**
+
+* *Blue Team Handbook: SOC, SIEM, & Threat Hunting Use Cases* — Don Murdoch. **[Paid]**
+* *Practical Splunk for Security* — (authors/edition vary). **[Paid]**
+
+---
+
+### Phase 4 — Incident Response & Forensics
+
+**Goal:** Triage incidents, contain, eradicate, and do basic forensics.
+
+**Courses & Videos:**
+
+* Incident Response tutorials (SANS, Black Hills InfoSec). **[Paid/Free]**
+* SANS FOR courses for deep forensic skills. **[Paid]**
+
+**Books:**
+
+* *Incident Response & Computer Forensics* — Jason Luttgens et al. **[Paid]**
+* *The Art of Memory Forensics* — Michael Hale Ligh et al. **[Paid]**
+
+---
+
+### Phase 5 — Threat Hunting & Detection Engineering
+
+**Goal:** Proactive hunting, write detections (Sigma), YARA, memory analysis.
+
+**Resources:**
+
+* Threat hunting videos & conference talks — Blue Team Village, CrowdStrike, Huntress. **[Free]**
+* MITRE ATT&CK deep dives & case studies. **[Free]**
+
+**Tools:** YARA, Volatility, Sigma rules, Splunk/ELK advanced queries.
+
+**Books:**
+
+* *Practical Cyber Threat Intelligence* — Dr. Wilson Bautista. **[Paid]**
+* *Cybersecurity Blue Team Toolkit* — Nadean Tanner. **[Paid]**
+
+---
+
+### Phase 6 — Build a Home SOC Lab
+
+**Goal:** Host a mini-SOC to produce real telemetry & practice detection/response.
+
+**Components:**
+
+* Windows VM(s) for client/server (forward Event Logs).
+* Linux VM for Splunk/ELK/Security Onion.
+* Security Onion (includes Zeek, Suricata, ELK).
+* Kali Linux (attacker VM) or other attack VMs.
+* Optional EDR trial (CrowdStrike, Microsoft Defender for Endpoint).
+
+**Simplified steps:**
+
+1. Deploy Security Onion or ELK + Beats (Filebeat/Winlogbeat).
+2. Forward logs from Windows & Linux machines.
+3. Simulate attacks from Kali (password spray, Lateral movement, phishing simulation).
+4. Create detections, alerts, and dashboards; then tune to reduce false positives.
+
+---
+
+### Certifications (map to learning phases)
+
+* **Beginner:** CompTIA Security+ **[Paid]**
+* **SOC-focused:** EC-Council CSA (Certified SOC Analyst) **[Paid]**
+* **SIEM:** Splunk certifications (User/Power User) **[Paid]**
+* **Advanced:** GCIH, GCIA, OSCP (if moving into red/blue hybrid) **[Paid]**
+* **Cloud SOC:** Microsoft SC-200 — Security Operations Analyst **[Paid]**
+
+---
+
+### Recommended books (short list)
+
+* *Blue Team Handbook: SOC, SIEM, & Threat Hunting Use Cases* — Don Murdoch
+* *Practical Splunk for Security* — (various authors / editions)
+* *Incident Response & Computer Forensics* — Jason Luttgens et al.
+* *The Art of Memory Forensics* — Michael Hale Ligh et al.
+* *Practical Cyber Threat Intelligence* — Wilson Bautista
+* *Cybersecurity Blue Team Toolkit* — Nadean Tanner
+* *The Practice of Network Security Monitoring* — Richard Bejtlich
+* *The Linux Command Line* — William Shotts
+
+---
+
+### Quick directory: recommended channels & platforms
+
+* **YouTube channels:** NetworkChuck, The Cyber Mentor, Blue Team Labs, SANS, CrowdStrike, Elastic, Microsoft Security, Security Onion Project.
+* **Platforms:** TryHackMe, Hack The Box (blue team modules), Splunk free training, Elastic docs/tutorials, Security Onion docs.
+* **Threat Intel Feeds:** AlienVault OTX, VirusTotal, Abuse.ch, MITRE ATT&CK.
+
+---
+
+### Appendix — how to use this roadmap
+
+* Follow phases sequentially. Pair videos with hands-on labs immediately. Practice > watch.
+* Build your home SOC early. Keep a learning log: for each detection practiced, write a 1-page postmortem.
+* Revisit MITRE ATT&CK when tuning detections — it maps adversary techniques to telemetry you should monitor.
+
+---
+
+## 2) Python script — ready-to-run (copy/paste into a file)
+
+
+If you want, I can immediately paste a **short printable checklist** (one-page) for the very first 30 days to start your SOC learning — ready to copy and pin to your desk. Want that now? (If yes, I’ll produce it immediately here.)
