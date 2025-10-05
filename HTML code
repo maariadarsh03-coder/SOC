@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Find My Devices</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13a4ec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101c22",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div class="flex flex-col h-screen justify-between">
+<div class="flex-grow overflow-y-auto">
+<header class="sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-10 p-4">
+<div class="flex items-center justify-between">
+<button class="p-2 -ml-2">
+<span class="material-symbols-outlined text-gray-900 dark:text-white">
+                menu
+              </span>
+</button>
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">Find My Devices</h1>
+<div class="w-8"></div>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<div class="aspect-video bg-center bg-no-repeat bg-cover rounded-xl" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMzr4TwQsZY-8PMCLQKwbusdjNWTEDqAWFUA7mUb3OXY2xFORNPjtuBiOD8nDt3PNNt8O_1pKFql5SYS8k6CbdaOGyUtw3YEtTCy8ghLf4rtrUlfXcu2FsFirvYcj77vuBZgQ83BJ5qqB7mg5gfMhcnvvu5m-OYbqqMhhLsOwIKpDEGI9LJUzaA9_4WpedOKU1qICgktP876xBBGMnhI2Mo6txksA2BjogErEbzJVVBZK0sJkHmfyNY1gMEsiFHMgzpEhpxzhGjD4");'></div>
+<div>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">My Devices</h2>
+<div class="space-y-2">
+<a class="flex items-center gap-4 p-3 bg-white/50 dark:bg-white/5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-200" href="#">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-12 text-primary">
+<span class="material-symbols-outlined">smartphone</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-gray-900 dark:text-white">My Phone</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">Last seen 2 hours ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">
+                  chevron_right
+                </span>
+</a>
+<a class="flex items-center gap-4 p-3 bg-white/50 dark:bg-white/5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-200" href="#">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-12 text-primary">
+<span class="material-symbols-outlined">laptop_mac</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-gray-900 dark:text-white">My Laptop</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">Last seen 1 day ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">
+                  chevron_right
+                </span>
+</a>
+<a class="flex items-center gap-4 p-3 bg-white/50 dark:bg-white/5 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-colors duration-200" href="#">
+<div class="flex items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20 shrink-0 size-12 text-primary">
+<span class="material-symbols-outlined">tablet_mac</span>
+</div>
+<div class="flex-grow">
+<p class="font-bold text-gray-900 dark:text-white">My Tablet</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">Last seen 3 days ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">
+                  chevron_right
+                </span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-4 bg-primary text-white text-sm font-bold tracking-wider">
+<span class="material-symbols-outlined">volume_up</span>
+<span>Play Sound</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-4 bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-white text-sm font-bold tracking-wider">
+<span class="material-symbols-outlined">delete_forever</span>
+<span>Erase Device</span>
+</button>
+</div>
+</main>
+</div>
+<footer class="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-white/10">
+<nav class="flex justify-around items-center h-20 px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">devices</span>
+<span class="text-xs font-medium">Devices</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Account</span>
+</a>
+</nav>
+<div class="h-safe-area-bottom"></div>
+</footer>
+</div>
+
+</body></html>
